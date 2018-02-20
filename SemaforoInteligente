@@ -1,0 +1,60 @@
+/* semaforo
+  Este semaforo tiene 2 partes una es un semaforo comun con 3 focos(rojo, verde,amarillo) que corresponde a los carros y otto 
+  de 2 colores(rojo, verde) correspondiente a los peatones, en el semaforo de los peatones habra un boton el cual  su funcion
+  sera pedir el paso al semaforo de los coches para que los peatones puedan pasar, el tiempo que dure cada semaforo dependera
+  de un potenciometro que se encargara de la medicion del tiempo de espera
+
+Autor: Manuel Alejandro Torres Fonseca 
+*/                               //puertos    
+const int pverde = 9;       //led verde del peaton
+const int projo = 8;        //led rojo del peaton
+const int rojo = 11;        //led rojo de autos
+const int ama = 12;         //led amarillo de autos
+const int verde = 13;       //led verde de autos
+const int boton = 7;        //boton de  peatones
+const int pot=A0;           //potenciometro 
+int espera=0;               // variable para checar el tiempo 
+
+void setup() {
+  pinMode(boton, INPUT);            //de la linea 18 a 25 se indica si el componente va a ingresar o va recivir datos
+  pinMode(pverde, OUTPUT);
+  pinMode(projo, OUTPUT);
+  pinMode(rojo, OUTPUT);
+  pinMode(ama, OUTPUT);
+  pinMode(verde, OUTPUT);
+  digitalWrite(verde, HIGH);
+  digitalWrite(projo, HIGH);
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  int val=0;                              //permite  inicializar el precionado del boton
+  int valor=0;                            //inicializa el valor del potenciometro
+ val=digitalRead(boton);                  //infivs que el boton emitira un pulso digital
+ valor=(analogRead(pot)*10);              // indica la cantidad que va mandar el potenciometro de manera analogica
+
+ 
+  if (val == HIGH &&espera==0) {            //indica que empiece el cambio cuando se preciona el boton y asegurando que halla pasado 
+      espera==1;                            // tiempo desde que se preciono por ultima vez
+      digitalWrite(verde, LOW);             //line 39 y 40 inidica el cambio de luz roja a amarilla para los autos
+      digitalWrite(ama, HIGH);
+     delay(valor);                          //indica el tiempo de espera dado por el potenciometro
+
+      digitalWrite(ama, LOW);             // linea 43 47 indica el cambio del amarillo a rojo en caso de los autos y a verde en caso de los peatones
+      digitalWrite(rojo, HIGH);
+      digitalWrite(projo, LOW);
+      digitalWrite(pverde, HIGH);
+      delay(valor);
+      }
+      
+      digitalWrite(pverde, LOW);        //linea 50 55indica que se les acabo el tiempo a los peatones y procede con el verde en los autos 
+      digitalWrite(projo, HIGH);
+      digitalWrite(rojo, LOW);
+      digitalWrite(verde, HIGH);
+      delay(valor);
+      espera=0;
+  }
+
+
+
