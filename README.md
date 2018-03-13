@@ -1,5 +1,5 @@
 # SemaforoInteligente
-1.[circuito](/README.md "circuito")
+1.[circuito][circuito]
 
 ***
 # Descripcion   
