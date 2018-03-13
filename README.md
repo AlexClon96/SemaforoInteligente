@@ -1,5 +1,5 @@
 # SemaforoInteligente
-1.[circuito][circuito]
+1.[circuito en digital]("circuito")
 
 ***
 # Descripcion   
