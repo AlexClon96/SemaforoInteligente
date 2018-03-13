@@ -1,5 +1,5 @@
 # SemaforoInteligente
-1.[circuito en digital](#circuito)
+1.[circuito en digital](#circuito)    
 2.[codigo en arduino](#codigo)
 ***
 # Descripcion   
