@@ -1,6 +1,7 @@
 # SemaforoInteligente
 ***
 ## indice 
++ [descripcion del programa](#descripcion)
 + [circuito en digital](#circuito)    
 + [codigo en arduino](#codigo)
 ***
